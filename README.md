@@ -37,6 +37,6 @@
 	rabbitmq:3.7.14-management
 		--支持数据文件挂载到宿主机
 		--支持日志文件挂载到宿主机
-		--初始化用户名guest，密码：guest 安装一定要修改
+		--初始化用户名guest，密码：guest 安装完一定要修改
 	
 	具体请看docker-compose.yml配置内容和各个文件下的dockerfile。
