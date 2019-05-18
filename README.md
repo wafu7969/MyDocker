@@ -1,6 +1,6 @@
 # MyDocker
-用docker-compose部署php+nginx+mysql+mongodb+redis+rabbit
-作者：王福强
+	用docker-compose部署php+nginx+mysql+mongodb+redis+rabbit
+	作者：王福强
 
 	php:7.2
 		--支持mysqli扩展安装
