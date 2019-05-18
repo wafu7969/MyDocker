@@ -9,7 +9,8 @@
 		--支持redis扩展安装
 		--支持mongodb扩展安装
 		--支持rabbitmq扩展安装
-		--支持rabbitmq扩展安装
+		--支持与mysql容器建立连接
+		--支持与redis容器建立连接
 	
 	nginx:1.15.11
 		--支持与php容器建立连接
