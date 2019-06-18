@@ -48,9 +48,9 @@ RUN cd /home \
 
 
 #安装 Composer
-#ENV COMPOSER_HOME /root/composer
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
+ENV COMPOSER_HOME /root/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 
 
 #删除已经安装好的包

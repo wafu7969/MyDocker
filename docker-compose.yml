@@ -92,3 +92,15 @@ services:
         - ./rabbit/logs:/var/log/rabbitmq/log
 
 
+  elasticsearch:
+     container_name: es-search
+     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+     volumes:
+      - ./elasticsearch/esdata:/usr/share/elasticsearch/data
+     environment:
+       - bootstrap.memory_lock=true  # 禁用交换区
+       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"   #设置初始内存和最大内存
+       - discovery.type=single-node
+     ports:
+       - "9300:9300"
+       - "9200:9200"
