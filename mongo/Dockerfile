@@ -1,9 +1,12 @@
-FROM mongo:4.1
+FROM mongo:4.0.10
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# 将本地的setup.js映射到Docker容器中
-COPY ./setup/setup.js /docker-entrypoint-initdb.d/
+# 将本地初始化数据的脚本setup.sh映射到容器/docker-entrypoint-initdb.d中
+ENV AUTO_RUN_DIR /docker-entrypoint-initdb.d
+ENV INSTALL_MONGO_SHELL setup.sh
+COPY ./$INSTALL_MONGO_SHELL $AUTO_RUN_DIR/
+RUN chmod a+x $AUTO_RUN_DIR/$INSTALL_MONGO_SHELL
