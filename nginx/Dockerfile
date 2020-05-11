@@ -1,5 +1,12 @@
-FROM nginx:1.15.11
+FROM nginx:1.18.0-alpine
 MAINTAINER wangfuqiang "wafu7969@qq.com"
+
+# 修改源
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+# 安装ca 证书
+RUN apk update && \
+    apk add --no-cache ca-certificates 
 
 #设置时区
 ENV TZ=Asia/Shanghai
