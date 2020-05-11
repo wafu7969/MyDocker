@@ -1,4 +1,5 @@
 # MyDocker
+	alpine分支是采用官方alpine构建的，优点是镜像特别的小
 	用docker-compose部署php+nginx+mysql+mongodb+redis+rabbit
 	作者：王福强
 
