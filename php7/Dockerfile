@@ -44,6 +44,7 @@ RUN cd /home \
 && ./configure --prefix=/opt/rabbitmq-c-0.8.0 \
 && make && make install
 
+#amqp更新版本下载地址 https://pecl.php.net/package/amqp
 RUN cd /home \
 && tar -zxvf amqp-1.9.4.tgz \
 && cd amqp-1.9.4 \
