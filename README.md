@@ -4,6 +4,7 @@
 
 ## php:7.2
 	--支持mysqli扩展安装
+	--支持swoole扩展安装
 	--支持pdo_mysql扩展安装
 	--支持opcache扩展安装
 	--支持redis扩展安装
