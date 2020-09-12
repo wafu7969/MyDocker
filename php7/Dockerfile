@@ -32,6 +32,10 @@ COPY ./ext-source/amqp-1.9.4.tgz /home/amqp-1.9.4.tgz
 RUN pecl install /home/redis-4.3.0.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 RUN pecl install /home/mongodb-1.5.3.tgz && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
 
+#安装swoole扩展
+RUN pecl install swoole-4.5.1 \
+   && docker-php-ext-enable swoole
+
 #安装第三方拓展，这里是先安装rabbitmq-c-master再安装php amqp 拓展
 RUN cd /home \
 && tar -zxvf rabbitmq-c-0.8.0.tar.gz \
@@ -58,10 +62,12 @@ ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 RUN cd /home \
 && rm -f ./redis-4.3.0.tgz \
 && rm -f ./mongodb-1.5.3.tgz \
-&& rm -f ./rabbitmq-c-master.tgz \
+&& rm -f ./rabbitmq-c-0.8.0.tar.gz \
+&& rm -rf ./rabbitmq-c-0.8.0 \
 && rm -f ./amqp-1.9.4.tgz \
-&& rm -rf ./rabbitmq-c-master \
-&& rm -rf ./amqp-1.9.4
+&& rm -rf ./amqp-1.9.4 \
+&& rm -rf /tmp/* \
+&& rm -rf /var/cache/apk/*
 
 
 WORKDIR /data
