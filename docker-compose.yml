@@ -85,6 +85,15 @@ services:
     # command: "yapi server"  # 部署的时候执行的命令
     command: "node /my-yapi/vendors/server/app.js"  # 部署完之后执行的命令
 
+  mosquitto:
+    build: ./mosquitto
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:rw
+      - ./mosquitto/config/pwfile.conf:/mosquitto/config/pwfile.conf:rw
+    command: ['mosquitto', '-c', '/mosquitto/config/mosquitto.conf']
+    ports:
+      - '1883:1883'
+
 # 如果不需要MongoDB的网页端，以下内容可以不加
 #  mongo-express:  # 会自动从Docker Hub上自动获取mongo-express这个镜像
 #    image: mongo-express
