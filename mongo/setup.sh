@@ -3,7 +3,7 @@ mongo <<EOF
 
 use admin;
 db.createUser({ 
-    user: "admin", 
+    user: "admin",
     pwd: "j8K9aPm1v4z",
     roles: [ { role: "root", db: "admin" } ], 
     mechanisms : ["SCRAM-SHA-1"]

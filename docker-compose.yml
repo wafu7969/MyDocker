@@ -71,6 +71,20 @@ services:
         #MONGO_INITDB_ROOT_USERNAME: admin
         #MONGO_INITDB_ROOT_PASSWORD: admin
 
+  yapi:
+    build: ./yapi
+    # 启动的时候依赖mongodb镜像
+    depends_on:
+      - mongodb
+    restart: always
+    volumes:
+      - ./yapi/my-yapi:/my-yapi
+    ports:
+      - 3000:3000
+      - 9090:9090
+    # command: "yapi server"  # 部署的时候执行的命令
+    command: "node /my-yapi/vendors/server/app.js"  # 部署完之后执行的命令
+
 # 如果不需要MongoDB的网页端，以下内容可以不加
 #  mongo-express:  # 会自动从Docker Hub上自动获取mongo-express这个镜像
 #    image: mongo-express
