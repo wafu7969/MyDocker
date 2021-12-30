@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.4.27-fpm
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
