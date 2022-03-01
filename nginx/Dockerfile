@@ -1,4 +1,4 @@
-FROM nginx:1.15.11
+FROM nginx:1.20.2
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
