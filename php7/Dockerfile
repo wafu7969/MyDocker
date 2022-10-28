@@ -1,4 +1,3 @@
-
 FROM php:7.4.30-fpm
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
