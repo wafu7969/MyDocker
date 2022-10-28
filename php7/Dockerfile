@@ -1,4 +1,5 @@
-FROM php:7.2-fpm
+
+FROM php:7.4.30-fpm
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
@@ -13,14 +14,21 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libssl-dev \
     cmake \
-&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-&& docker-php-ext-install -j$(nproc) gd \
+    wget \
+    && wget https://libzip.org/download/libzip-1.3.2.tar.gz && tar -zxvf libzip-1.3.2.tar.gz && cd libzip-1.3.2  \
+    && ./configure \
+    && make && make install \
+    && cd .. && rm -rf libzip-1.3.2 && rm -rf libzip-1.3.2.tar.gz \
+    && docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/include/ \
+    && docker-php-ext-install gd \
+    && docker-php-ext-enable gd \
     && docker-php-ext-install zip \
+    && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install opcache \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install bcmath \
-    && rm -r /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 #将预先下载好的拓展包从宿主机拷贝进去
 COPY ./ext-source/redis-4.3.0.tgz /home/redis-4.3.0.tgz
@@ -73,5 +81,3 @@ RUN cd /home \
 
 WORKDIR /data
 #Write Permission
-
-RUN usermod -u 1000 www-data
