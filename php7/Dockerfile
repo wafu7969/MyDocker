@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     cmake \
     wget \
-    && wget https://libzip.org/download/libzip-1.3.2.tar.gz && tar -zxvf libzip-1.3.2.tar.gz && cd libzip-1.3.2  \
+    && wget https://nih.at/libzip/libzip-1.3.2.tar.gz && tar -zxvf libzip-1.3.2.tar.gz && cd libzip-1.3.2  \
     && ./configure \
     && make && make install \
     && cd .. && rm -rf libzip-1.3.2 && rm -rf libzip-1.3.2.tar.gz \
