@@ -1,4 +1,4 @@
-FROM rabbitmq:3.7.14-management
+FROM rabbitmq:3.11.15-management
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
