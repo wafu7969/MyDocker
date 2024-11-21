@@ -1,4 +1,4 @@
-FROM redis:5.0.4
+FROM redis:5.0.11
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
