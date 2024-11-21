@@ -1,4 +1,4 @@
-FROM mongo:4.1
+FROM mongo:latest
 MAINTAINER wangfuqiang "wafu7969@qq.com"
 
 #设置时区
